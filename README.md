@@ -7,3 +7,6 @@ The clue was provided by Developer-Demo_Windows.exe in D:\Program Files (x86)\Ze
 And this was used in the variable LPTPORT in the EPL demo from https://support.zebra.com/cpws/docs/zpl/zpl_elp_vbnet.htm
 For a C++ program, the string needed to be different. This is the sort of thing to be wary of in the world of "raw printing fu". 
      char printer[] = "\\\\.\\usb#vid_0a5f&pid_0016#21j113600300#{28d78fad-5a12-11d1-ae5b-0000f803a8c2}";
+
+
+Another thing to watch out for with using DLLs from VBA is which kind of platform, x86 versus x64, that your Excel installation is. Mixing and matching tends to have unreliable results. It tends to be more reliant on the version of Excel than the operating system, as a DLL compiled for x86 worked on an x64 system but I didn't check and see what version of Excel I was using. 
