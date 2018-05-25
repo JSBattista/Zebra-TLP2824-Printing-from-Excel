@@ -1,0 +1,32 @@
+Here is the calling VBA if needed
+
+
+Public Declare PtrSafe Sub printBC Lib "printBC.dll" (ByVal s As String)
+
+Sub Button2_Click()
+
+    Dim CurrentPath As String
+    CurrentPath = CurDir()
+    ChDir (ThisWorkbook.Path)
+
+    Dim cel As Range
+    Dim selectedRange As Range
+    Set selectedRange = Application.Selection
+    For Each cel In selectedRange.Cells
+       printBC ("." & Chr(10) & _
+"N" & Chr(10) & _
+"q812" & Chr(10) & _
+"S2" & Chr(10) & _
+"A50,0,0,1,1,1,N," & """" & cel.Value & """" & Chr(10) & _
+"B65,10,0,1,1,3,50,B," & """" & cel.Value & """" & Chr(10) & _
+"P1" & Chr(10) & _
+"." & Chr(10))
+    Next cel
+    
+    ChDir (CurrentPath) ' Change back to original directory
+
+   
+End Sub
+
+
+Note, good tip on using DLL in same folder from here: https://stackoverflow.com/questions/971296/how-to-use-dlls-in-the-same-directory-as-an-excel-file
